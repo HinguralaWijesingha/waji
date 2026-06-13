@@ -5,15 +5,15 @@ export default function Home() {
   
   // ---------------------------------------------------------
   // WEBSITE LINKS & SETTINGS
-  // Paste your friend's real Facebook page link here:
   // ---------------------------------------------------------
   const facebookLink = "https://www.facebook.com/share/1E8zZY8dtY/"; 
 
   // ---------------------------------------------------------
   // GALLERY IMAGES LIST
-  // Add as many images as you want to this list from your public/recent folder.
   // ---------------------------------------------------------
   const galleryImages = [
+    "/recent/image3.jpg", 
+    "/recent/image4.jpg", 
     "/recent/image1.jpeg", 
     "/recent/image2.jpeg", 
   ];
@@ -124,10 +124,18 @@ export default function Home() {
             <p className="mt-8 text-stone-600 text-lg max-w-2xl mx-auto font-light">A glimpse into the stunning arrangements and event designs we have curated for our clients.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {/* UPDATED: Masonry Layout (Pinterest style) for natural image heights! */}
+          <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
             {galleryImages.map((src, index) => (
-              <div key={index} className="relative h-80 rounded-3xl overflow-hidden shadow-sm group">
-                <Image src={src} alt={`Waji Flora Recent Work ${index + 1}`} fill className="object-cover group-hover:scale-110 transition duration-700 ease-in-out" unoptimized />
+              <div key={index} className="relative rounded-3xl overflow-hidden shadow-sm group mb-6 break-inside-avoid">
+                <Image 
+                  src={src} 
+                  alt={`Waji Flora Recent Work ${index + 1}`} 
+                  width={1200}
+                  height={1200}
+                  className="w-full h-auto group-hover:scale-110 transition duration-700 ease-in-out" 
+                  unoptimized 
+                />
                 <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition duration-500"></div>
               </div>
             ))}
@@ -145,7 +153,6 @@ export default function Home() {
             <p className="text-stone-600 text-lg max-w-2xl mx-auto font-light">We would love to hear from you. Reach out to us directly to discuss your event or place an order.</p>
           </div>
 
-          {/* Changed grid from md:grid-cols-3 to md:grid-cols-2 so the two cards fit perfectly centered */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14 max-w-4xl mx-auto relative z-10">
             
             <a href="tel:+94719730141" className="group bg-stone-50 p-10 rounded-[2rem] text-center border border-transparent hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all duration-300">
